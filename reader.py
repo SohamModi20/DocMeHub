@@ -4,7 +4,8 @@ from pdf2image import convert_from_path
 from typing import List
 import pytesseract
 import cv2
-
+import  sys
+sys.path.append(os.path.join(os.getcwd(), "poppler-23.11.0", "Library", "bin"))
 class Output:
     def __init__(self,value:List):
         self.value=value
@@ -18,7 +19,7 @@ class Output:
     def get_output(self)->List:
         return self.value
 class Reader:
-    def __init__(self,POPPLER_PATH=r'C:\\Program Files\\poppler-23.11.0\\Library\\bin'):
+    def __init__(self,POPPLER_PATH=r'poppler-23.11.0\\Library\\bin'):
         assert os.path.exists(POPPLER_PATH)
         self.POPPLER_PATH=POPPLER_PATH
     def read(self,object)->Output:
