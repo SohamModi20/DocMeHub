@@ -69,7 +69,7 @@ def main():
 
         if query:
             docs = VectoreStore.similarity_search(query=query, k=3)
-            llm = OpenAI(temperature=0.5)
+            llm = OpenAI(model="gpt-3.5-turbo-instruct", temperature=0.5)
             chain = load_qa_chain(llm=llm, chain_type="stuff")
             response = chain.run(input_documents=docs, question=query)
             st.write(response)
